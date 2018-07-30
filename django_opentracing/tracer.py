@@ -1,6 +1,8 @@
 from django.conf import settings
-from django.utils.module_loading import import_string
-import opentracing
+try:                                                                                                                               
+    from django.utils.module_loading import import_string                                                                          
+except ImportError:                                                                                                                
+    from django.utils.module_loading import import_by_pathimport opentracing
 import threading
 
 class DjangoTracer(object):
